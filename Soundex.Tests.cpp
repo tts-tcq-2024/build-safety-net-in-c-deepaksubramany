@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 #include "Soundex.h"
 
-TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits) generateSoundex("AX", soundex);
+TEST(SoudexTestsuite, ReplacesConsonantsWithAppropriateDigits) 
+{
+    generateSoundex("AX", soundex);
     ASSERT_STREQ(soundex, "A020"); // 'X' maps to '2' and remaining is '0' for padding
 
     generateSoundex("BAX", soundex);
