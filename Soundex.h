@@ -22,7 +22,7 @@ char getSoundexCode(char c) {
 void generateSoundex(const char *name, char *soundex) {
     if (name == NULL || soundex == NULL) {
         if (soundex) {
-            soundex[0] = '\0';  // Safe initialization
+            soundex[0] = '\0';  
         }
         return;
     }
