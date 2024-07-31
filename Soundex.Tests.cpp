@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Soundex.h"
 
-TEST(SoudexTestsuite, 7) 
+TEST(SoudexTestsuite, SoundexGeneration) 
 {
     generateSoundex("AX", soundex);
     ASSERT_STREQ(soundex, "A020"); // 'X' maps to '2' and remaining is '0' for padding
