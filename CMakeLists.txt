@@ -26,5 +26,9 @@ target_link_libraries(
   gcov
 )
 
+add_executable(SoundexTests
+    src/coundex.c
+    tests/Soundex.Tests.cpp
+
 include(GoogleTest)
 gtest_discover_tests(cleancode)
