@@ -30,7 +30,7 @@ void generateSoundex(const char *name, char *soundex) {
     // Initialize Soundex with the first character of the name
     soundex[0] = toupper(name[0]);
     soundex[1] = soundex[2] = soundex[3] = '0';
-    soundex[4] = '\0';
+    soundex[4] = '\0'; // Ensure null-termination
 
     // Generate the Soundex code
     int sIndex = 1;
@@ -43,4 +43,12 @@ void generateSoundex(const char *name, char *soundex) {
             lastCode = code;
         }
     }
+    
+    // Optional: Fill remaining positions with '0' if less than 4 codes are generated
+    while (sIndex < 4) {
+        soundex[sIndex++] = '0';
+    }
+    soundex[4] = '\0'; // Ensure null-termination
 }
+
+#endif // SOUNDEX_H
