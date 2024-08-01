@@ -5,6 +5,7 @@ project(cleancode)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Fetch GoogleTest
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -15,20 +16,36 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_compile_options("--coverage")
-add_executable(
-  cleancode
-  Soundex.Tests.cpp
-)
-target_link_libraries(
-  cleancode
-  GTest::gmock_main
-  gcov
+
+# Add the main executable target
+add_executable(cleancode
+    main.c
+    soundex.c
 )
 
+# Link the executable with GoogleTest libraries
+# Only necessary if you want to use GoogleTest in your main executable
+# Otherwise, you can comment this out or adjust accordingly
+# target_link_libraries(cleancode
+#     GTest::gtest_main
+# )
+
+# Add the test executable target
 add_executable(SoundexTests
-    src/coundex.c
-    tests/Soundex.Tests.cpp
+    tests/SoundexTests.cpp
+)
 
+# Link GoogleTest to the test executable
+target_link_libraries(SoundexTests
+    GTest::gtest_main
+)
+
+# Include directories for your source files and headers
+include_directories(${CMAKE_SOURCE_DIR})
+
+# Compile options for coverage if needed
+add_compile_options(--coverage)
+
+# Discover and add GoogleTest tests
 include(GoogleTest)
-gtest_discover_tests(cleancode)
+gtest_discover_tests(SoundexTests)
