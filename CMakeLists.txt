@@ -23,16 +23,9 @@ add_executable(cleancode
     soundex.c
 )
 
-# Link the executable with GoogleTest libraries
-# Only necessary if you want to use GoogleTest in your main executable
-# Otherwise, you can comment this out or adjust accordingly
-# target_link_libraries(cleancode
-#     GTest::gtest_main
-# )
-
 # Add the test executable target
 add_executable(SoundexTests
-    tests/SoundexTests.cpp
+    Soundex.Tests.cpp
 )
 
 # Link GoogleTest to the test executable
