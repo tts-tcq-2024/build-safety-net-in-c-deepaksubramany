@@ -7,4 +7,4 @@ char getSoundexCode(char c);
 
 void generateSoundex(const char *name, char *soundex);
 
-#endif // SOUNDEX_H
+#endif 
